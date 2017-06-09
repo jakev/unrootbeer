@@ -163,6 +163,42 @@ public class MainHook implements IXposedHookLoadPackage {
                         return false;
                     }
                 });
+
+        /* checkForRootNative() */
+        findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
+                "checkForRootNative", new XC_MethodReplacement() {
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                        return false;
+                    }
+                });
+
+        /* checkSuExists() */
+        findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
+                "checkSuExists", new XC_MethodReplacement() {
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                        return false;
+                    }
+                });
+
+        /* checkForDangerousProps() */
+        findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
+                "checkForDangerousProps", new XC_MethodReplacement() {
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                        return false;
+                    }
+                });
+
+        /* checkForRWPaths() */
+        findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
+                "checkForRWPaths", new XC_MethodReplacement() {
+                    @Override
+                    protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                        return false;
+                    }
+                });
     }
 
     /* Helpers */
