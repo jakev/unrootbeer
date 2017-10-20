@@ -66,13 +66,16 @@ public class MainHook implements IXposedHookLoadPackage {
                 });
 
         /* isRootedWithoutBusyBoxCheck() */
-        findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
-                "isRootedWithoutBusyBoxCheck", new XC_MethodReplacement() {
-                    @Override
-                    protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-                        return false;
-                    }
-                });
+        try {
+            /* This check may or may not exist. Just catch and move on. */
+            findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
+                    "isRootedWithoutBusyBoxCheck", new XC_MethodReplacement() {
+                        @Override
+                        protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+                            return false;
+                        }
+                    });
+        } catch (NoSuchMethodError e) { }
 
         /* detectTestKeys() */
         findAndHookMethod(ROOTBEER_CLASS_NAME, classLoader,
